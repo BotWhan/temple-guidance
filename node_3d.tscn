@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dra4oub7jwbic"]
+
+[ext_resource type="Script" path="res://scripts/core/campus_graph.gd" id="1_3ccmj"]
+[ext_resource type="Script" path="res://CampusNode.gd" id="2_ugewq"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fotxt"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_fotxt")
+
+[node name="CampusGraph" type="Node" parent="MeshInstance3D"]
+script = ExtResource("1_3ccmj")
+
+[node name="CampusNode" type="Marker3D" parent="MeshInstance3D/CampusGraph"]
+script = ExtResource("2_ugewq")
+
+[node name="CampusNode2" type="Marker3D" parent="MeshInstance3D/CampusGraph"]
+script = ExtResource("2_ugewq")
+
+[node name="CampusNode3" type="Marker3D" parent="MeshInstance3D/CampusGraph"]
+script = ExtResource("2_ugewq")
+
+[node name="CampusNode4" type="Marker3D" parent="MeshInstance3D/CampusGraph"]
+script = ExtResource("2_ugewq")
