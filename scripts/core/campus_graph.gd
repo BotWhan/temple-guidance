@@ -11,7 +11,7 @@ func add_location(id: int, position: Vector3, metadata: Dictionary) -> void:
 func connect_locations(from_id: int, to_id: int, bidirectional := true) -> void:
 	astar.connect_points(from_id, to_id, bidirectional)
 
-func get_path(from_id: int, to_id: int, avoid_ids: Array[int] = []) -> PackedVector3Array:
+func get_path_vector(from_id: int, to_id: int, avoid_ids: Array[int] = []) -> PackedVector3Array:
 	# temp disable avoided nodes
 	for id in avoid_ids:
 		if astar.has_point(id):
