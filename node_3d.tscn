@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dra4oub7jwbic"]
+[gd_scene load_steps=6 format=3 uid="uid://dra4oub7jwbic"]
 
 [ext_resource type="Script" path="res://scripts/core/campus_graph.gd" id="1_3ccmj"]
 [ext_resource type="Script" path="res://CampusNode.gd" id="2_ugewq"]
+[ext_resource type="Script" path="res://line_2d.gd" id="3_f1tyo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fotxt"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1cowe"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -13,14 +16,36 @@ mesh = SubResource("PlaneMesh_fotxt")
 [node name="CampusGraph" type="Node" parent="MeshInstance3D"]
 script = ExtResource("1_3ccmj")
 
-[node name="CampusNode" type="Marker3D" parent="MeshInstance3D/CampusGraph"]
+[node name="CampusNode1" type="Marker3D" parent="MeshInstance3D/CampusGraph" node_paths=PackedStringArray("adjacency")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.661286, 0, 0)
 script = ExtResource("2_ugewq")
+adjacency = [NodePath("../CampusNode3"), NodePath("../CampusNode4")]
 
-[node name="CampusNode2" type="Marker3D" parent="MeshInstance3D/CampusGraph"]
+[node name="CampusNode2" type="Marker3D" parent="MeshInstance3D/CampusGraph" node_paths=PackedStringArray("adjacency")]
+transform = Transform3D(1, 0, 0, 0, 0.999526, -0.0308002, 0, 0.0308002, 0.999526, 1.1194, 0.539194, 0)
 script = ExtResource("2_ugewq")
+adjacency = [NodePath("../CampusNode3")]
 
-[node name="CampusNode3" type="Marker3D" parent="MeshInstance3D/CampusGraph"]
+[node name="CampusNode3" type="Marker3D" parent="MeshInstance3D/CampusGraph" node_paths=PackedStringArray("adjacency")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.654444, 0, 0)
 script = ExtResource("2_ugewq")
+adjacency = [NodePath("../CampusNode1"), NodePath("../CampusNode2")]
 
-[node name="CampusNode4" type="Marker3D" parent="MeshInstance3D/CampusGraph"]
+[node name="CampusNode4" type="Marker3D" parent="MeshInstance3D/CampusGraph" node_paths=PackedStringArray("adjacency")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.39707)
 script = ExtResource("2_ugewq")
+adjacency = [NodePath("../CampusNode1"), NodePath("../CampusNode2")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-2, -1, 290, 197, 273, 68)
+script = ExtResource("3_f1tyo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.08, 0, 0, 0, 2, 0, 0, 0, 0.08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_1cowe")

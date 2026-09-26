@@ -3,3 +3,5 @@ class_name CampusNode
 
 #needs an adjacency matrix
 @export var adjacency: Array[CampusNode] = []
+#func getAdjacency():
+#	return adjacency
