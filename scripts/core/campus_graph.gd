@@ -35,8 +35,7 @@ func create_box(point: CampusNode) -> void:
 	
 func findBestPath(from: CampusNode, to:CampusNode) -> PackedVector3Array:#idk what to call this function but it
 	#implements the stair/escalator logic and is the function that we want to call in general
-	#TODO: add stairs to avoid list if accessibility is on
-	#TODO: count number of staircases in path and if it's more than 2 then use elevator by adding stairs to avoidlist
+	
 	var avoidIds:Array[int] = []
 	if accessibility:
 		for stair in stair_ids:
@@ -67,6 +66,8 @@ func _ready() -> void:
 		add_location(child.get_instance_id(), child.position)
 		if child.stair:
 			stair_ids.append(child.get_instance_id())
+		elif child.elevator:
+			elevator_ids.append(child.get_instance_id())
 	var done : Array [int] = []#array of ids of children who we have linked all of their neighbors
 	for child in children:
 		for adjacentNode in child.adjacency:
