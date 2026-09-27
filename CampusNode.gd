@@ -3,7 +3,7 @@ class_name CampusNode
 
 #needs an adjacency matrix
 @export var adjacency: Array[CampusNode] = []
-@export var stairs:bool
+@export var stair:bool
 @export var elevator:bool
 
 #func getAdjacency():
